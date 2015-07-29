@@ -1,3 +1,5 @@
+(https://travis-ci.org/barryearles/parallel-tasks-gradle-plugin.svg)
+
 # Parallel Task Execution
 
 This plugin allows tasks to be executed in parallel within the same module.  It should not be confused with the [--parallel](https://github.com/gradle/gradle/blob/master/design-docs/done/parallel-project-execution.md "--parallel") option that allows tasks from separate projects in a decoupled multi-project build to be executed in parallel.
