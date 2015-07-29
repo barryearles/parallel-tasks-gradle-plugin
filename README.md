@@ -1,4 +1,4 @@
-(https://travis-ci.org/barryearles/parallel-tasks-gradle-plugin.svg)
+[](https://travis-ci.org/barryearles/parallel-tasks-gradle-plugin.svg)
 
 # Parallel Task Execution
 
