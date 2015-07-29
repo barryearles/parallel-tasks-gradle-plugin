@@ -30,12 +30,12 @@ import org.junit.Before
 import org.junit.Test
 
 @WithGMock
-class ParallelTasksPluginTest {
+class RunParallelTasksTaskPluginTest {
 
     ParallelTasksPlugin parallelTasksPlugin
 
     Project mockProject
-    ParallelTasks mockParallelTasks
+    RunParallelTasksTask mockParallelTasks
     ExtensionContainer mockExtensionContainer
     TaskContainer mockTaskContainer
 
@@ -47,15 +47,15 @@ class ParallelTasksPluginTest {
     @Test
     void testCanAddParallelTasksTaskToProject() {
         Project project = ProjectBuilder.builder().build()
-        Task task = project.task(ParallelTasksPlugin.TASK_NAME, type: ParallelTasks)
+        Task task = project.task(ParallelTasksPlugin.TASK_NAME, type: RunParallelTasksTask)
 
-        assertTrue(task instanceof ParallelTasks)
+        assertTrue(task instanceof RunParallelTasksTask)
     }
 
     @Test
     void canAddActionsToParallelTasksTask() {
         Project project = ProjectBuilder.builder().build()
-        Task task = project.task(ParallelTasksPlugin.TASK_NAME, type: ParallelTasks)
+        Task task = project.task(ParallelTasksPlugin.TASK_NAME, type: RunParallelTasksTask)
         List<String> taskNames = addTasksToProject(project, 5);
 
         task.doFirst {
@@ -83,12 +83,12 @@ class ParallelTasksPluginTest {
         mockProject = mock(Project)
         mockExtensionContainer = mock(ExtensionContainer)
         mockTaskContainer = mock(TaskContainer)
-        mockParallelTasks = mock(ParallelTasks)
+        mockParallelTasks = mock(RunParallelTasksTask)
 
         mockProject.getExtensions().returns(mockExtensionContainer)
         mockExtensionContainer.create(ParallelTasksPlugin.EXTENSION_NAME, ParallelTasksExtension)
         mockProject.getTasks().returns(mockTaskContainer)
-        mockTaskContainer.create(ParallelTasksPlugin.TASK_NAME, ParallelTasks).returns(mockParallelTasks)
+        mockTaskContainer.create(ParallelTasksPlugin.TASK_NAME, RunParallelTasksTask).returns(mockParallelTasks)
         mockParallelTasks.setDescription(ParallelTasksPlugin.DESCRIPTION)
     }
 

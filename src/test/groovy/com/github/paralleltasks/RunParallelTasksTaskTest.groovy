@@ -22,16 +22,16 @@ import org.gradle.testfixtures.ProjectBuilder
 import org.junit.Before
 import org.junit.Test
 
-class ParallelTasksTest {
+class RunParallelTasksTaskTest {
 
     Project project
-    ParallelTasks parallelTasks
+    RunParallelTasksTask parallelTasks
     List<Thread> taskThreads
 
     @Before
     void setup() {
         project = ProjectBuilder.builder().build()
-        parallelTasks = project.getTasks().create(ParallelTasksPlugin.TASK_NAME, ParallelTasks);
+        parallelTasks = project.getTasks().create(ParallelTasksPlugin.TASK_NAME, RunParallelTasksTask);
         taskThreads = []
     }
 

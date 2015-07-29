@@ -28,15 +28,15 @@ import java.util.List;
 /**
  * Task to allow concurrent execution of tasks within the same module
  */
-class ParallelTasks extends DefaultTask {
+class RunParallelTasksTask extends DefaultTask {
 
     /**
      * Constructor
      */
-    public ParallelTasks() { }
+    public RunParallelTasksTask() { }
 
     /**
-     * Adds concurrent task execution behavior to this task
+     * Executes tasks defined in {@link ParallelTasksExtension#taskNames} concurrently
      */
     @TaskAction
     public void exec() {

@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class ParallelTasksExtensionTest {
+public class RunParallelTasksTaskExtensionTest {
 
     @Test
     public void testParallelTaskExtension() {

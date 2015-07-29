@@ -37,7 +37,7 @@ class ParallelTasksPlugin implements Plugin<Project> {
     void apply(Project project) {
 
         project.getExtensions().create(EXTENSION_NAME, ParallelTasksExtension)
-        ParallelTasks parallelTasks = project.getTasks().create(TASK_NAME, ParallelTasks)
+        RunParallelTasksTask parallelTasks = project.getTasks().create(TASK_NAME, RunParallelTasksTask)
         parallelTasks.setDescription(DESCRIPTION)
     }
 }
