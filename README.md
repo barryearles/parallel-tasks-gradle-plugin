@@ -35,6 +35,21 @@ Configure the tasks that you wish to be executed in parallel
         ]
     }
 
+After applying the plugin, a new task named __runParallelTasks__ is added to the build lifecycleExecute the tasks in parallel
+
+	$ ./gradlew tasks
+    :tasks
+
+    ...
+
+    Other tasks
+    -----------
+    runParallelTasks - Provides the ability to execute tasks in parallel
+
+Execute the tasks in parallel
+
+	./gradlew runParallelTasks
+
 ## Building from Source
 
 	./gradlew clean build
