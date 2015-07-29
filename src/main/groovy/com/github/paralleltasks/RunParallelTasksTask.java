@@ -39,7 +39,7 @@ class RunParallelTasksTask extends DefaultTask {
      * Executes tasks defined in {@link ParallelTasksExtension#taskNames} concurrently
      */
     @TaskAction
-    public void exec() {
+    public void exec() throws InterruptedException {
         ArrayList<Thread> taskThreads = new ArrayList<>();
         executeTasksInParallel(taskThreads);
     }
@@ -49,7 +49,7 @@ class RunParallelTasksTask extends DefaultTask {
      *
      * @param taskThreads The list of threads that represent each task to execute
      */
-    protected void executeTasksInParallel(List<Thread> taskThreads) {
+    protected void executeTasksInParallel(List<Thread> taskThreads) throws InterruptedException {
 
         ParallelTasksExtension parallelTasksExtension;
 
@@ -64,8 +64,8 @@ class RunParallelTasksTask extends DefaultTask {
                     ParallelTasksPlugin.EXTENSION_NAME);
         } else {
 
-            for (String task : tasksToExecuteInParallel) {
-                TaskActionsExecutor taskActionsExecutor = new TaskActionsExecutor(getProject(), task);
+            for (String taskName : tasksToExecuteInParallel) {
+                TaskActionsExecutor taskActionsExecutor = new TaskActionsExecutor(getProject(), taskName);
                 Thread taskThread = new Thread(taskActionsExecutor);
                 taskThreads.add(taskThread);
                 taskThread.start();
@@ -80,7 +80,7 @@ class RunParallelTasksTask extends DefaultTask {
      *
      * @param taskThreads The tasks executing in parallel
      */
-    protected void waitForCompletionOf(List<Thread> taskThreads) {
+    protected void waitForCompletionOf(List<Thread> taskThreads) throws InterruptedException {
         for(Thread taskThread : taskThreads) {
             try {
                 taskThread.join();
@@ -88,7 +88,7 @@ class RunParallelTasksTask extends DefaultTask {
                 getProject().getLogger().error(
                         MarkerFactory.getMarker(ParallelTasksPlugin.PLUGIN_NAME),
                         "Error waiting for completion of thread: {}", ToStringBuilder.reflectionToString(taskThread));
-                ie.printStackTrace();
+                throw ie;
             }
         }
     }
