@@ -17,11 +17,14 @@
  */
 package com.github.paralleltasks
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals
 
-public class RunParallelTasksTaskExtensionTest {
+/**
+ * Test class for {@link ParallelTasksExtension}
+ */
+public class ParallelTasksExtensionTest {
 
     @Test
     public void testParallelTaskExtension() {

@@ -19,15 +19,17 @@ package com.github.paralleltasks
 
 import org.gmock.WithGMock
 import org.gradle.api.Action
+import org.gradle.api.Project
 import org.gradle.api.Task
 import org.gradle.api.tasks.TaskContainer
-
-import static org.gmock.GMockTestCase.mock
-
-import org.gradle.api.Project
 import org.junit.Before
 import org.junit.Test
 
+import static org.gmock.GMockTestCase.mock
+
+/**
+ * Test class for {@link TaskActionsExecutor}
+ */
 @WithGMock
 class TaskActionsExecutorTest {
 

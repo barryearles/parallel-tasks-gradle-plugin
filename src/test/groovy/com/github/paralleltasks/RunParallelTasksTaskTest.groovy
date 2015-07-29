@@ -22,6 +22,9 @@ import org.gradle.testfixtures.ProjectBuilder
 import org.junit.Before
 import org.junit.Test
 
+/**
+ * Test class for {@link RunParallelTasksTask}
+ */
 class RunParallelTasksTaskTest {
 
     Project project
