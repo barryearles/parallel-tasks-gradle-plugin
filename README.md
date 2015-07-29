@@ -17,6 +17,17 @@ Apply the plugin
 
 	apply plugin: 'parallel-tasks'
 
+After applying the plugin, a new task named __runParallelTasks__ is now available
+
+	$ ./gradlew tasks
+    :tasks
+
+    ...
+
+    Other tasks
+    -----------
+    runParallelTasks - Provides the ability to execute tasks in parallel
+
 Configure the tasks that you wish to be executed in parallel
 
 	task webpackDevServer << {
@@ -34,17 +45,6 @@ Configure the tasks that you wish to be executed in parallel
             "bootRun"  // Task provided by "spring-boot" gradle plugin (e.g. apply plugin: 'spring-boot')
         ]
     }
-
-After applying the plugin, a new task named __runParallelTasks__ is added to the build lifecycleExecute the tasks in parallel
-
-	$ ./gradlew tasks
-    :tasks
-
-    ...
-
-    Other tasks
-    -----------
-    runParallelTasks - Provides the ability to execute tasks in parallel
 
 Execute the tasks in parallel
 
