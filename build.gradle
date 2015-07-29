@@ -1,7 +1,11 @@
 apply plugin: 'groovy'
+apply plugin: 'cobertura'
+apply plugin: 'com.github.kt3k.coveralls'
 
 buildscript {
     ext.dependency = [
+        cobertura: "${coberturaPluginLib}:${coberturaVersion}",
+        coveralls: "${coverallsPluginLib}:${coverallsVersion}",
         gmock: "${gmockLib}:${gmockVersion}",
         junit: "${junitLib}:${junitVersion}"
     ]
@@ -9,6 +13,18 @@ buildscript {
     repositories {
         mavenCentral()
     }
+
+    dependencies {
+        classpath(
+            dependency.cobertura,
+            dependency.coveralls
+        )
+    }
+}
+
+cobertura {
+    coverageFormats = ['xml']
+    coverageSourceDirs = sourceSets.main.groovy.srcDirs
 }
 
 repositories {

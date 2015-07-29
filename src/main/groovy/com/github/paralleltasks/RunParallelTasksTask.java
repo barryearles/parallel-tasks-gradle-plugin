@@ -63,12 +63,13 @@ class RunParallelTasksTask extends DefaultTask {
                     "{} configuration not provided, continuing without running any tasks in parallel",
                     ParallelTasksPlugin.EXTENSION_NAME);
         } else {
-            tasksToExecuteInParallel.forEach((String task) -> {
+
+            for (String task : tasksToExecuteInParallel) {
                 TaskActionsExecutor taskActionsExecutor = new TaskActionsExecutor(getProject(), task);
                 Thread taskThread = new Thread(taskActionsExecutor);
                 taskThreads.add(taskThread);
                 taskThread.start();
-            });
+            }
 
             waitForCompletionOf(taskThreads);
         }
@@ -80,7 +81,7 @@ class RunParallelTasksTask extends DefaultTask {
      * @param taskThreads The tasks executing in parallel
      */
     protected void waitForCompletionOf(List<Thread> taskThreads) {
-        taskThreads.forEach((taskThread) -> {
+        for(Thread taskThread : taskThreads) {
             try {
                 taskThread.join();
             } catch(InterruptedException ie) {
@@ -89,6 +90,6 @@ class RunParallelTasksTask extends DefaultTask {
                         "Error waiting for completion of thread: {}", ToStringBuilder.reflectionToString(taskThread));
                 ie.printStackTrace();
             }
-        });
+        }
     }
 }

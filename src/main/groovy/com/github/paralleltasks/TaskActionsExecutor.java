@@ -52,6 +52,9 @@ public class TaskActionsExecutor implements Runnable {
     @Override
     public void run() {
         Task task = project.getTasks().getByPath(taskName);
-        task.getActions().forEach((Action action) -> action.execute(task));
+
+        for(Action action : task.getActions()) {
+            action.execute(task);
+        }
     }
 }
