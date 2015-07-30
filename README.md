@@ -23,11 +23,11 @@ Add the dependency to your build script
 
 Apply the plugin
 
-	apply plugin: 'com.github.paralleltasks'
+    apply plugin: 'com.github.paralleltasks'
 
 After applying the plugin, a new task named __runParallelTasks__ is now available
 
-	$ ./gradlew tasks
+    $ ./gradlew tasks
     :tasks
 
     ...
