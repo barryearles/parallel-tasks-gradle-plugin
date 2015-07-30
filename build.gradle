@@ -108,13 +108,13 @@ pluginBundle {
       id = 'parallel-tasks'
       displayName = 'Parallel Task Execution Gradle Plugin'
       tags = ['plugin', 'task', 'concurrency', 'paralleltask' ]
-      version = "1.0.0"
+      version = "1.0.1"
     }
   }
 
   mavenCoordinates {
     groupId = "com.github.paralleltasks"
     artifactId = "parallel-tasks-gradle-plugin"
-    version = "1.0.0"
+    version = "1.0.1"
   }
 }
