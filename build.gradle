@@ -60,8 +60,8 @@ bintray {
         publicDownloadNumbers = true
 
         version {
-            name = "1.0.0"
-            desc = "Parallel Tasks Gradle Plugin (${version})"
+            name = "1.0.1"
+            desc = "Parallel Tasks Gradle Plugin (1.0.1)"
             released = new Date()
         }
     }
