@@ -1,9 +1,7 @@
-apply plugin: 'groovy'
-apply plugin: 'cobertura'
-apply plugin: 'com.github.kt3k.coveralls'
 
 buildscript {
     ext.dependency = [
+        bintray: "${bintrayPluginLib}:${bintrayPluginVersion}",
         cobertura: "${coberturaPluginLib}:${coberturaVersion}",
         coveralls: "${coverallsPluginLib}:${coverallsVersion}",
         gmock: "${gmockLib}:${gmockVersion}",
@@ -12,15 +10,24 @@ buildscript {
 
     repositories {
         mavenCentral()
+        jcenter()
     }
 
     dependencies {
         classpath(
+            dependency.bintray,
             dependency.cobertura,
             dependency.coveralls
         )
     }
 }
+
+apply plugin: 'groovy'
+apply plugin: 'cobertura'
+apply plugin: 'com.github.kt3k.coveralls'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 
 cobertura {
     coverageFormats = ['xml']
@@ -29,6 +36,40 @@ cobertura {
 
 repositories {
     mavenCentral()
+}
+
+bintray {
+
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_API_KEY')
+
+    publications = ['Publication']
+
+    pkg {
+        repo = 'maven'
+        name = "${rootProject.name}"
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/barryearles/parallel-tasks-gradle-plugin.git'
+        labels = ['tasks', 'concurrent', 'concurrency', 'parallel', 'gradle', 'plugin']
+        publicDownloadNumbers = true
+
+        version {
+            name = "${version}"
+            desc = "Parallel Tasks Gradle Plugin (${version})"
+            released = new Date()
+        }
+    }
+}
+
+publishing {
+    publications {
+        Publication(MavenPublication) {
+            from components.java
+            groupId "${group}"
+            artifactId 'parallel-tasks-gradle-plugin'
+            version "${version}"
+        }
+    }
 }
 
 dependencies {
