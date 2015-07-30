@@ -11,6 +11,9 @@ buildscript {
     repositories {
         mavenCentral()
         jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
 
     dependencies {
@@ -19,6 +22,7 @@ buildscript {
             dependency.cobertura,
             dependency.coveralls
         )
+	classpath "com.gradle.publish:plugin-publish-plugin:0.9.1"
     }
 }
 
@@ -28,6 +32,7 @@ apply plugin: 'com.github.kt3k.coveralls'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: "com.gradle.plugin-publish"
 
 cobertura {
     coverageFormats = ['xml']
@@ -36,6 +41,7 @@ cobertura {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 bintray {
@@ -90,4 +96,25 @@ version = "${version}"
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.5'
+}
+
+pluginBundle {
+  website = 'https://github.com/barryearles/parallel-tasks-gradle-plugin'
+  vcsUrl = 'https://github.com/barryearles/parallel-tasks-gradle-plugin'
+  description = 'This plugin allows tasks that are defined within the same module to be executed in parallel'
+  plugins {
+
+    parallelTasksPlugin {
+      id = 'parallel-tasks'
+      displayName = 'Parallel Task Execution Gradle Plugin'
+      tags = ['plugin', 'task', 'concurrency', 'paralleltask' ]
+      version = "1.0.0"
+    }
+  }
+
+  mavenCoordinates {
+    groupId = "com.github.paralleltasks"
+    artifactId = "parallel-tasks-gradle-plugin"
+    version = "1.0.0"
+  }
 }

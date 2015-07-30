@@ -23,7 +23,7 @@ Add the dependency to your build script
 
 Apply the plugin
 
-	apply plugin: 'parallel-tasks'
+	apply plugin: 'com.github.paralleltasks'
 
 After applying the plugin, a new task named __runParallelTasks__ is now available
 

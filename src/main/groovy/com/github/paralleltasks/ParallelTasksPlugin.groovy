@@ -26,7 +26,7 @@ import org.gradle.api.Project
 class ParallelTasksPlugin implements Plugin<Project> {
 
     protected static final String PLUGIN_NAME = ParallelTasksPlugin.class.getSimpleName()
-    protected static final String PLUGIN_ID = 'parallel-tasks'
+    protected static final String PLUGIN_ID = 'com.github.paralleltasks'
     protected static final String TASK_NAME = 'runParallelTasks'
     protected static final String EXTENSION_NAME = 'parallelTasks'
     protected static final String DESCRIPTION = 'Provides the ability to execute tasks in parallel'
