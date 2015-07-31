@@ -49,6 +49,11 @@ task sourcesJar(type: Jar, dependsOn: classes) {
     from sourceSets.main.allSource
 }
 
+task groovydocJar(type: Jar, dependsOn: groovydoc) {
+    classifier = 'groovydoc'
+    from groovydoc.destinationDir
+}
+
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
@@ -75,8 +80,8 @@ bintray {
         publicDownloadNumbers = true
 
         version {
-            name = "1.0.1"
-            desc = "Parallel Tasks Gradle Plugin (1.0.1)"
+            name = "${version}"
+            desc = "Parallel Tasks Gradle Plugin (${version})"
             released = new Date()
         }
     }
@@ -90,6 +95,7 @@ publishing {
             artifactId 'parallel-tasks-gradle-plugin'
             version "${version}"
             artifact sourcesJar
+            artifact groovydocJar
             artifact javadocJar
         }
     }
@@ -125,13 +131,13 @@ pluginBundle {
       id = 'parallel-tasks'
       displayName = 'Parallel Task Execution Gradle Plugin'
       tags = ['plugin', 'task', 'concurrency', 'paralleltask' ]
-      version = "1.0.1"
+      version = "${version}"
     }
   }
 
   mavenCoordinates {
     groupId = "com.github.paralleltasks"
     artifactId = "parallel-tasks-gradle-plugin"
-    version = "1.0.1"
+    version = "${version}"
   }
 }
