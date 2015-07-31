@@ -80,7 +80,7 @@ bintray {
         publicDownloadNumbers = true
 
         version {
-            name = "${version}"
+            name = "1.0.1"
             desc = "Parallel Tasks Gradle Plugin (${version})"
             released = new Date()
         }
@@ -91,9 +91,9 @@ publishing {
     publications {
         Publication(MavenPublication) {
             from components.java
-            groupId "${group}"
+            groupId "com.github.paralleltasks"
             artifactId 'parallel-tasks-gradle-plugin'
-            version "${version}"
+            version "1.0.1"
             artifact sourcesJar
             artifact groovydocJar
             artifact javadocJar
@@ -131,13 +131,13 @@ pluginBundle {
       id = 'parallel-tasks'
       displayName = 'Parallel Task Execution Gradle Plugin'
       tags = ['plugin', 'task', 'concurrency', 'paralleltask' ]
-      version = "${version}"
+      version = "1.0.1"
     }
   }
 
   mavenCoordinates {
     groupId = "com.github.paralleltasks"
     artifactId = "parallel-tasks-gradle-plugin"
-    version = "${version}"
+    version = "1.0.1"
   }
 }
