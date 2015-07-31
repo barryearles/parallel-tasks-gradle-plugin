@@ -89,6 +89,8 @@ publishing {
             groupId "${group}"
             artifactId 'parallel-tasks-gradle-plugin'
             version "${version}"
+            artifact sourcesJar
+            artifact javadocJar
         }
     }
 }

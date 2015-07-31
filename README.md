@@ -20,6 +20,10 @@ Add the dependency to your build script
                 url  "http://dl.bintray.com/barryearles/maven" 
             }
         }
+
+        dependencies {
+            classpath "com.github.paralleltasks:parallel-tasks-gradle-plugin:1.0.1"
+        }
     }
 
 Apply the plugin
