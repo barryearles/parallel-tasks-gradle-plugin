@@ -6,10 +6,6 @@
 
 This plugin allows tasks that are defined within the same module to be executed in parallel (as specified in the __parallelTasks__ configuration).  It should not be confused with the [--parallel](https://github.com/gradle/gradle/blob/master/design-docs/done/parallel-project-execution.md "--parallel") option that allows tasks from separate projects in a decoupled multi-project build to be executed in parallel.
 
-## Use Case
-
-I needed the ability to run several servers concurrently to assist with development
-
 ## Usage
 
 Add the dependency to your build script
